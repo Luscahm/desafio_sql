@@ -7,6 +7,8 @@ Para uma melhor visualização dos dados e gráficos, escolheu-se a interface gr
 
 Já para a parte de SQL preferiu-se o PostgreSQL aliado ao psycopg2, optou-se por utilizar o psycopg2 ao invés de arquivos .sql, por conta da interface do streamlit, como a mesma é programada em python, realizar as querys e crações de tabela utilizando psycopg2 ao invés de arquivos sql iria facilitar a implementação desta interface, porem ainda é utilizado linguagem SQl nesta biblioteca
 
+[Vídeo demonstração da interface funcionando](https://youtu.be/Ym9KT_5OhyY)
+
 ## Instações dos requisitos
 
 Primeiramente é necessario ter o python instalado, onde no [site oficial](https://www.python.org/downloads/) já realizara o download baseado no seu SO
@@ -118,6 +120,7 @@ Aqui também é carregado os dados do csv via pandas que serão utilizados na ta
 As tasks da primeira parte(em csv) podem ser resolvidas pelas funções presentes no arquivo csv_tasks.py
 
  - Formatando as colunas
+
 A seguinte função:
  ```python
 def formating_columns(data):
@@ -129,34 +132,40 @@ Irá formatar algumas colunas do nosso dataframe para poder realizar as operaç�
 
 - Construa uma tabela auxiliar que sumarize o valor vendido por cada vendedor, ordenando do maior para o menor
   
-  A seguinte função irá realizar esta task:
+A seguinte função irá realizar esta task:
 ```python
 def sumarize_sellers(data):
 ```
- Onde a mesma irá somar as vendas de cada vendedor e retornar uma tabela com nome dos vendedores e valor vendido por ele,  ordenada em ordem decrescente em relação ao valor de vendas. A coluna 'Valor' estára formatada de volta no formato R$ X.XXX,XX.
- A função retorna o nome do vendedor e o valor total vendido por ele
+Onde a mesma irá somar as vendas de cada vendedor e retornar uma tabela com nome dos vendedores e valor vendido por ele,  ordenada em ordem decrescente em relação ao valor de vendas. A coluna 'Valor' estára formatada de volta no formato R$ X.XXX,XX.
+
+A função retorna o nome do vendedor e o valor total vendido por ele
 
 - Imprima e identifica qual foi o cliente responsável pela venda com maior valor e com menor valor;
-  A seguinte função irá realizar esta task:
+
+A seguinte função irá realizar esta task:
 ```python
 def best_and_worst_client(data):
 ```
 Onde a mesma irá verificar qual o maior e menor numero da coluna `valor`  e retornar um dataframe filtrado apenas para venda de maior e menor valor, optou-se por fazer isto e não imprimir apenas o nome dos clientes, para poder plotar na interface streamlit. A coluna 'Valor' estára formatada de volta no formato R$ X.XXX,XX
 
 - Imprima valor médio por Tipo de venda (Serviços, Licenciamento, Produtos)
-  A seguinte função irá realizar esta task:
+
+A seguinte função irá realizar esta task:
 ```python
 def type_sales_mean(data):
 ```
 Onde a mesma agrupa os valores por tipo, e após isto realiza a média entre eles e após isto ordenando em ordem decrescente em relação ao valor de vendas. A coluna 'Valor' estára formatada de volta no formato R$ X.XXX,XX;
+
 A função retorna um dataframe com o Tipo  e o valor médio de venda
 
 - Imprima o número de vendas realizada por cliente;
-  A seguinte função irá realizar esta task:
+
+A seguinte função irá realizar esta task:
 ```python
 def sales_per_client(data):
 ```
 Onde a mesma é responsavel por contar quantas compras cada cliente fez.
+
 A função retorna um dataframe com o nome do cliente e quantas compras o mesmo realizou
 
 ### SQL Tasks
@@ -171,6 +180,7 @@ Antes das realizações das tasks em si, foi feita a criação das tabelas sql a
 ```python
 def create_tables(conn):
 ```
+
 Onde a mesma ira criar as tabelas demonstradas na imagem, utilizando a biblioteca psycopg2
 
 - Adicionando os dados na tabela
